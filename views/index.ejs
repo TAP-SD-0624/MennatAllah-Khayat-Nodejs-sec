@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>File Manager</title>
+    <link rel="stylesheet" href="/public/styles.css">
+</head>
+<body>
+    <h1>Files</h1>
+    <ul>
+        <% files.forEach(file => { %>
+            <li>
+                <a href="/files/<%= file %>"><%= file %></a>
+                <form action="/files/delete/<%= file %>" method="post" style="display:inline;">
+                    <button type="submit">Delete</button>
+                </form>
+                <form action="/files/rename/<%= file %>" method="post" style="display:inline;">
+                    <input type="text" name="newFilename" placeholder="New name" required>
+                    <button type="submit">Rename</button>
+                </form>
+            </li>
+        <% }); %>
+    </ul>
+    <a href="/create">Create New File</a>
+</body>
+</html>
